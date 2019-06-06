@@ -1,0 +1,101 @@
+{
+	"partitions" : [
+		{
+			"name" : "Top",
+			"pins" : [
+				{
+					"name" : "buzzer",
+					"strict" : false
+				},
+				{
+					"name" : "segment_sel[0]",
+					"strict" : false
+				},
+				{
+					"name" : "segment_sel[1]",
+					"strict" : false
+				},
+				{
+					"name" : "segment_sel[2]",
+					"strict" : false
+				},
+				{
+					"name" : "segment_sel[3]",
+					"strict" : false
+				},
+				{
+					"name" : "segment_sel[4]",
+					"strict" : false
+				},
+				{
+					"name" : "segment_sel[5]",
+					"strict" : false
+				},
+				{
+					"name" : "segment_seg[0]",
+					"strict" : false
+				},
+				{
+					"name" : "segment_seg[1]",
+					"strict" : false
+				},
+				{
+					"name" : "segment_seg[2]",
+					"strict" : false
+				},
+				{
+					"name" : "segment_seg[3]",
+					"strict" : false
+				},
+				{
+					"name" : "segment_seg[4]",
+					"strict" : false
+				},
+				{
+					"name" : "segment_seg[5]",
+					"strict" : false
+				},
+				{
+					"name" : "segment_seg[6]",
+					"strict" : false
+				},
+				{
+					"name" : "flash_led[0]",
+					"strict" : false
+				},
+				{
+					"name" : "flash_led[1]",
+					"strict" : false
+				},
+				{
+					"name" : "flash_led[2]",
+					"strict" : false
+				},
+				{
+					"name" : "flash_led[3]",
+					"strict" : false
+				},
+				{
+					"name" : "c_reset",
+					"strict" : false
+				},
+				{
+					"name" : "clk",
+					"strict" : false
+				},
+				{
+					"name" : "c_scale_sel",
+					"strict" : false
+				},
+				{
+					"name" : "c_set_min",
+					"strict" : false
+				},
+				{
+					"name" : "c_set_hour",
+					"strict" : false
+				}
+			]
+		}
+	]
+}

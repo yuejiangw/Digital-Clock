@@ -1,0 +1,83 @@
+-----------------------------------------------------
+  -- 数字钟
+----------------------------------------------------- 
+LIBRARY IEEE;
+USE IEEE.STD_LOGIC_1164.ALL;
+USE IEEE.STD_LOGIC_UNSIGNED.ALL;
+
+ENTITY CLOCK IS
+PORT(                   CLK : IN STD_LOGIC;  -- 1Hz时钟信号输入
+                C_SCALE_SEL : IN STD_LOGIC;  -- 时钟进制选择
+                    C_RESET : IN STD_LOGIC;  -- 时钟复位信号
+  　　C_SET_MIN, C_SET_HOUR : IN STD_LOGIC;  -- 时间调节
+                 　　BUZZER : OUT STD_LOGIC;  -- 蜂鸣器控制
+                SEGMENT_SEL : OUT STD_LOGIC_VECTOR(5 DOWNTO 0);  -- 数码位选信号输出
+                SEGMENT_SEG : OUT STD_LOGIC_VECTOR(7 DOWNTO 0);  -- 数码管短信信号输出
+                  FLASH_LED : OUT STD_LOGIC_VECTOR(3 DOWNTO 0));  -- 流水灯
+END CLOCK;
+
+ARCHITECTURE BHV OF CLOCK IS
+   -- 调用秒钟计数模块声明
+    COMPONENT SECOND_BCD_COUNT  
+    PORT(clk_to_second:IN STD_LOGIC;
+			reset:IN STD_LOGIC;
+			set_min : IN STD_LOGIC;
+         CO : OUT STD_LOGIC;
+         DATOUT : OUT STD_LOGIC_VECTOR(7 DOWNTO 0));
+    END COMPONENT;
+    -- 调用分钟计数模块声明
+    COMPONENT MINUTE_BCD_COUNT  
+    PORT(clk_to_minute: IN STD_LOGIC;
+			reset: IN STD_LOGIC;
+			set_hour : IN STD_LOGIC;
+         CO : OUT STD_LOGIC;
+         DATOUT : OUT STD_LOGIC_VECTOR(7 DOWNTO 0));
+    END COMPONENT;
+    -- 调用小时计数模块声明
+    COMPONENT HOUR_BCD_COUNT  
+    PORT(clk_to_hour: IN STD_LOGIC;
+			reset: IN STD_LOGIC;
+			SCALE_SEL : IN STD_LOGIC;
+                                DATOUT : OUT STD_LOGIC_VECTOR(7 DOWNTO 0));
+    END COMPONENT;
+    -- 调用译码显示模块声明
+    COMPONENT SELTIME  
+    PORT(            SCAN_CLK : IN STD_LOGIC;  -- 扫描时钟输入 
+         HOUR: IN STD_LOGIC_VECTOR(7 DOWNTO 0);  -- 时间数据输入
+			MINUTE: IN STD_LOGIC_VECTOR(7 DOWNTO 0);  -- 时间数据输入
+			SECOND : IN STD_LOGIC_VECTOR(7 DOWNTO 0);  -- 时间数据输入
+                        　SEL : OUT STD_LOGIC_VECTOR(5 DOWNTO 0);  -- 位选信号输出                              
+                        　SEG : OUT STD_LOGIC_VECTOR(7 DOWNTO 0));  -- 段选信号输出
+    END COMPONENT;
+    -- 调用分频模块声明
+    COMPONENT DEV  
+    PORT(                  CLK_50MHz : IN STD_LOGIC;
+         CLK_1Hz, CLK_5Hz, CLK_250Hz : OUT STD_LOGIC);
+    END COMPONENT;
+    -- 整点报时模块
+    COMPONENT  ALERT  
+    PORT(  CLK : IN STD_LOGIC;  -- 激励LED变化
+          M_IN : IN STD_LOGIC_VECTOR(7 DOWNTO 0);  -- 输入分钟显示数据 
+          S_IN : IN STD_LOGIC_VECTOR(7 DOWNTO 0);  -- 输入秒钟显示数据 
+       SPEAKER : OUT STD_LOGIC;  -- 蜂鸣器控制
+           LED : OUT STD_LOGIC_VECTOR(3 DOWNTO 0));  -- 流水灯
+    END COMPONENT;
+    -- 按键延时消抖模块
+    COMPONENT KEY_DELAY  
+    PORT(CLK, KEY_IN : IN STD_LOGIC;  
+             KEY_OUT : OUT STD_LOGIC);
+    END COMPONENT;
+SIGNAL AD_HOUR, AD_MIN : STD_LOGIC;  -- 时钟调节信号
+SIGNAL S_CO, M_CO : STD_LOGIC;  -- 计数进位
+SIGNAL C_CLK, SCAN_CLK, FLOW_CLK : STD_LOGIC;  -- 计数时钟，扫描时钟，流水灯驱动时钟
+SIGNAL S_DAT, M_DAT, H_DAT : STD_LOGIC_VECTOR(7 DOWNTO 0);  -- 秒，分，时显示数据
+    BEGIN
+        u1 : SECOND_BCD_COUNT PORT MAP(C_CLK, C_RESET, AD_MIN, S_CO, S_DAT);  -- 秒钟
+        u2 : MINUTE_BCD_COUNT PORT MAP(S_CO, C_RESET, AD_HOUR, M_CO, M_DAT);  -- 分钟
+        u3 : HOUR_BCD_COUNT   PORT MAP(M_CO, C_RESET, C_SCALE_SEL, H_DAT);  -- 小时
+        u4 : SELTIME          PORT MAP(SCAN_CLK, H_DAT, M_DAT, S_DAT, SEGMENT_SEL, SEGMENT_SEG);  -- 译码显示
+        u5 : DEV              PORT MAP(CLK, C_CLK, FLOW_CLK , SCAN_CLK);  -- 分频
+        u6 : KEY_DELAY        PORT MAP(SCAN_CLK, C_SET_MIN, AD_MIN);  -- 分钟调整
+        u7 : KEY_DELAY        PORT MAP(SCAN_CLK, C_SET_HOUR, AD_HOUR);  -- 小时调整
+        u8 : ALERT            PORT MAP(FLOW_CLK, M_DAT,S_DAT, BUZZER, FLASH_LED);  -- 整点报时
+END BHV;        

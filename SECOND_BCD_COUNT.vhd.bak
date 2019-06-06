@@ -1,0 +1,33 @@
+-----------------------------------------------------
+  -- 秒钟BCD60进制计数
+-----------------------------------------------------
+LIBRARY IEEE;
+USE IEEE.STD_LOGIC_1164.ALL;
+USE IEEE.STD_LOGIC_UNSIGNED.ALL;
+
+ENTITY SECOND_BCD_COUNT IS
+PORT(clk_to_second, reset, set_min : IN STD_LOGIC;
+                                CO : OUT STD_LOGIC;
+                            DATOUT : OUT STD_LOGIC_VECTOR(7 DOWNTO 0));
+END SECOND_BCD_COUNT;
+
+ARCHITECTURE BHV OF SECOND_BCD_COUNT IS
+SIGNAL COUNT_SHI, COUNT_GE : STD_LOGIC_VECTOR(3 DOWNTO 0);
+SIGNAL COUNT_EN : STD_LOGIC;
+BEGIN 
+   CO <= set_min OR COUNT_EN;
+    PROCESS(clk_to_second, reset, set_min)      BEGIN
+   IF reset = '0'       THEN COUNT_SHI <= "0000"; COUNT_GE <= "0000"; -- 有复位信号，则清除计数
+    ELSIF clk_to_second'EVENT AND clk_to_second = '1'   THEN     
+        IF COUNT_SHI = "0101" AND COUNT_GE  = "1001"   THEN 
+            COUNT_SHI <= "0000"; COUNT_GE <= "0000";  COUNT_EN <= '1';  -- 计数进位（信号量不是立即赋值，需等下一个时钟信号到来。）
+        ELSIF COUNT_GE < "1001"     THEN COUNT_GE <= COUNT_GE + 1;  COUNT_EN <= '0';
+        ELSE COUNT_GE <= "0000";  
+            IF COUNT_SHI < "1010"   THEN COUNT_SHI <= COUNT_SHI + 1;  
+            ELSE COUNT_SHI <= "0000";  
+            END IF;
+        END IF;
+    END IF;
+    DATOUT <= COUNT_SHI & COUNT_GE;  -- 数据输出
+    END PROCESS;
+END BHV;

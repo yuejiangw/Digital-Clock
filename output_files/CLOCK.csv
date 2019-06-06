@@ -1,0 +1,69 @@
+# Copyright (C) 2018  Intel Corporation. All rights reserved.
+# Your use of Intel Corporation's design tools, logic functions 
+# and other software and tools, and its AMPP partner logic 
+# functions, and any output files from any of the foregoing 
+# (including device programming or simulation files), and any 
+# associated documentation or information are expressly subject 
+# to the terms and conditions of the Intel Program License 
+# Subscription Agreement, the Intel Quartus Prime License Agreement,
+# the Intel FPGA IP License Agreement, or other applicable license
+# agreement, including, without limitation, that your use is for
+# the sole purpose of programming logic devices manufactured by
+# Intel and sold by Intel or its authorized distributors.  Please
+# refer to the applicable agreement for further details.
+
+# Quartus Prime Version 18.0.0 Build 614 04/24/2018 SJ Lite Edition
+# File: E:\wyj\Files\Quartus Files\clock\output_files\CLOCK.csv
+# Generated on: Sun Oct 28 16:20:56 2018
+
+# Note: The column header names should not be changed if you wish to import this .csv file into the Quartus Prime software.
+
+To,Direction,Location,I/O Bank,VREF Group,Fitter Location,I/O Standard,Reserved,Current Strength,Slew Rate,Differential Pair,Strict Preservation
+buzzer,Output,,,,PIN_C11,2.5 V,,,,,
+c_reset,Input,,,,PIN_N13,2.5 V,,,,,
+c_scale_sel,Input,,,,PIN_E16,2.5 V,,,,,
+c_set_hour,Input,,,,PIN_M16,2.5 V,,,,,
+c_set_min,Input,,,,PIN_M15,2.5 V,,,,,
+clk,Input,,,,PIN_E1,2.5 V,,,,,
+flash_led[3],Output,,,,PIN_D9,2.5 V,,,,,
+flash_led[2],Output,,,,PIN_C9,2.5 V,,,,,
+flash_led[1],Output,,,,PIN_F9,2.5 V,,,,,
+flash_led[0],Output,,,,PIN_E10,2.5 V,,,,,
+segment_seg[7],Output,,,,PIN_R16,2.5 V,,,,,
+segment_seg[6],Output,,,,PIN_N15,2.5 V,,,,,
+segment_seg[5],Output,,,,PIN_N12,2.5 V,,,,,
+segment_seg[4],Output,,,,PIN_P15,2.5 V,,,,,
+segment_seg[3],Output,,,,PIN_T15,2.5 V,,,,,
+segment_seg[2],Output,,,,PIN_P16,2.5 V,,,,,
+segment_seg[1],Output,,,,PIN_N16,2.5 V,,,,,
+segment_seg[0],Output,,,,PIN_R14,2.5 V,,,,,
+segment_sel[5],Output,,,,PIN_N9,2.5 V,,,,,
+segment_sel[4],Output,,,,PIN_P9,2.5 V,,,,,
+segment_sel[3],Output,,,,PIN_M10,2.5 V,,,,,
+segment_sel[2],Output,,,,PIN_N11,2.5 V,,,,,
+segment_sel[1],Output,,,,PIN_P11,2.5 V,,,,,
+segment_sel[0],Output,,,,PIN_M11,2.5 V,,,,,
+BUZZER,Unknown,PIN_C11,7,B7_N0,,,,,,,
+C_RESET,Unknown,PIN_N13,5,B5_N0,,,,,,,
+C_SET_MIN,Unknown,PIN_M15,5,B5_N0,,,,,,,
+C_SET_HOUR,Unknown,PIN_M16,5,B5_N0,,,,,,,
+C_SCALE_SEL,Unknown,PIN_E16,6,B6_N0,,,,,,,
+CLK,Unknown,PIN_E1,1,B1_N0,,,,,,,
+SEGMENT_SEL[5],Unknown,PIN_N9,4,B4_N0,,,,,,,
+SEGMENT_SEL[4],Unknown,PIN_P9,4,B4_N0,,,,,,,
+SEGMENT_SEL[3],Unknown,PIN_M10,4,B4_N0,,,,,,,
+SEGMENT_SEL[2],Unknown,PIN_N11,4,B4_N0,,,,,,,
+SEGMENT_SEL[1],Unknown,PIN_P11,4,B4_N0,,,,,,,
+SEGMENT_SEL[0],Unknown,PIN_M11,4,B4_N0,,,,,,,
+SEGMENT_SEG[0],Unknown,PIN_R14,4,B4_N0,,,,,,,
+SEGMENT_SEG[1],Unknown,PIN_N16,5,B5_N0,,,,,,,
+SEGMENT_SEG[2],Unknown,PIN_P16,5,B5_N0,,,,,,,
+SEGMENT_SEG[3],Unknown,PIN_T15,4,B4_N0,,,,,,,
+SEGMENT_SEG[4],Unknown,PIN_P15,5,B5_N0,,,,,,,
+SEGMENT_SEG[5],Unknown,PIN_N12,4,B4_N0,,,,,,,
+SEGMENT_SEG[6],Unknown,PIN_N15,5,B5_N0,,,,,,,
+SEGMENT_SEG[7],Unknown,PIN_R16,5,B5_N0,,,,,,,
+FLASH_LED[0],Unknown,PIN_E10,7,B7_N0,,,,,,,
+FLASH_LED[1],Unknown,PIN_F9,7,B7_N0,,,,,,,
+FLASH_LED[2],Unknown,PIN_C9,7,B7_N0,,,,,,,
+FLASH_LED[3],Unknown,PIN_D9,7,B7_N0,,,,,,,

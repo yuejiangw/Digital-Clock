@@ -1,0 +1,60 @@
+-----------------------------------------------------
+  -- 数码管译码显示模块
+-----------------------------------------------------
+LIBRARY IEEE;
+USE IEEE.STD_LOGIC_1164.ALL;
+USE IEEE.STD_LOGIC_UNSIGNED.ALL;
+
+ENTITY SELTIME IS
+PORT(            SCAN_CLK : IN STD_LOGIC;  -- 扫描时钟输入 
+     HOUR, MINUTE, SECOND : IN STD_LOGIC_VECTOR(7 DOWNTO 0);  -- 时间数据输入
+                      SEL : OUT STD_LOGIC_VECTOR(5 DOWNTO 0);  -- 位选信号输出
+                      SEG : OUT STD_LOGIC_VECTOR(7 DOWNTO 0));  -- 段选信号输出
+END SELTIME;
+
+ARCHITECTURE BHV OF SELTIME IS
+SIGNAL SCAN_COUNT : STD_LOGIC_VECTOR(2 DOWNTO 0);  -- 扫描计数 
+SIGNAL DAT : STD_LOGIC_VECTOR(3 DOWNTO 0);  
+BEGIN   
+   -- 位选扫描进程 
+    SCAN : PROCESS(SCAN_CLK) BEGIN
+        IF SCAN_CLK'EVENT AND SCAN_CLK = '1'   THEN 
+            IF(SCAN_COUNT > "101")  THEN SCAN_COUNT <= "000";
+            ELSE SCAN_COUNT <= SCAN_COUNT + 1;
+            END IF;
+        END IF;
+        CASE SCAN_COUNT IS
+            WHEN "000" => DAT <= SECOND(3 DOWNTO 0);
+            WHEN "001" => DAT <= SECOND(7 DOWNTO 4);
+            WHEN "010" => DAT <= MINUTE(3 DOWNTO 0);
+            WHEN "011" => DAT <= MINUTE(7 DOWNTO 4);
+            WHEN "100" => DAT <= HOUR(3 DOWNTO 0);
+            WHEN "101" => DAT <= HOUR(7 DOWNTO 4);
+            WHEN  OTHERS => NULL;
+        END CASE;
+    END PROCESS SCAN;
+    -- 译码显示进程 共数码管编码
+    DECODE :    PROCESS(SCAN_COUNT) BEGIN
+        CASE DAT IS
+            WHEN "0000" => SEG<="11000000"; 
+            WHEN "0001" => SEG<="11111001"; 
+            WHEN "0010" => SEG<="10100100"; 
+            WHEN "0011" => SEG<="10110000"; 
+            WHEN "0100" => SEG<="10011001"; 
+            WHEN "0101" => SEG<="10010010"; 
+            WHEN "0110" => SEG<="10000010"; 
+            WHEN "0111" => SEG<="11111000"; 
+            WHEN "1000" => SEG<="10000000"; 
+            WHEN "1001" => SEG<="10010000"; 
+            WHEN OTHERS => SEG<="11111111"; 
+        END CASE;
+    END PROCESS DECODE; 
+    -- 3-8译码
+    SEL <=  "111110" WHEN SCAN_COUNT = "000" ELSE 
+              "111101" WHEN SCAN_COUNT = "001" ELSE 
+              "111011" WHEN SCAN_COUNT = "010" ELSE 
+              "110111" WHEN SCAN_COUNT = "011" ELSE 
+              "101111" WHEN SCAN_COUNT = "100" ELSE 
+              "011111" WHEN SCAN_COUNT = "101" ELSE 
+              "111111";
+END BHV;

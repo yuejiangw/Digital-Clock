@@ -1,0 +1,37 @@
+-----------------------------------------------------
+  -- 分频模块
+-----------------------------------------------------
+LIBRARY IEEE;
+USE IEEE.STD_LOGIC_1164.ALL;
+USE IEEE.STD_LOGIC_UNSIGNED.ALL;
+
+ENTITY DEV IS
+PORT(                 CLK_50MHz : IN STD_LOGIC;
+    CLK_1Hz, CLK_5Hz, CLK_250Hz : OUT STD_LOGIC);
+END;
+
+ARCHITECTURE BHV OF DEV IS
+SIGNAL Q1 : INTEGER RANGE 0 TO 49999999;
+SIGNAL Q2 : INTEGER RANGE 0 TO 199999;
+SIGNAL Q3 : INTEGER RANGE 0 TO 9999999;
+BEGIN
+    PROCESS(CLK_50MHz) BEGIN
+        IF CLK_50MHz'EVENT AND CLK_50MHz = '1' THEN
+           -- 1Hz
+            IF Q1 < 25000000        THEN CLK_1Hz <= '0'; Q1 <= Q1 + 1;
+            ELSIF Q1 < 49999999     THEN CLK_1Hz <= '1'; Q1 <= Q1 + 1;
+            ELSE Q1 <= 0;
+            END IF;
+            -- 250Hz
+            IF Q2 < 100000      THEN CLK_250Hz <= '0'; Q2 <= Q2 + 1;
+            ELSIF Q2 < 199999       THEN CLK_250Hz <= '1'; Q2 <= Q2 + 1; 
+            ELSE Q2 <= 0;
+            END IF;
+            -- 5Hz
+            IF Q3 < 5000000 THEN CLK_5Hz <= '0'; Q3 <= Q3 + 1;
+            ELSIF Q3 < 9999999  THEN CLK_5Hz <= '1'; Q3 <= Q3 + 1; 
+            ELSE Q3 <= 0;
+            END IF;
+        END IF;
+    END PROCESS;
+END;

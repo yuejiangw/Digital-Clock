@@ -1,0 +1,257 @@
+------------------------------------------------------------
+Timing Analyzer Summary
+------------------------------------------------------------
+
+Type  : Slow 1200mV 85C Model Setup 'clk'
+Slack : -5.306
+TNS   : -282.756
+
+Type  : Slow 1200mV 85C Model Setup 'seltime:u4|scan_count[1]'
+Slack : -4.766
+TNS   : -17.598
+
+Type  : Slow 1200mV 85C Model Setup 'dev:u5|clk_250hz'
+Slack : -2.898
+TNS   : -18.899
+
+Type  : Slow 1200mV 85C Model Setup 'key_delay:u6|key_out'
+Slack : -2.633
+TNS   : -12.939
+
+Type  : Slow 1200mV 85C Model Setup 'dev:u5|clk_1hz'
+Slack : -1.925
+TNS   : -10.813
+
+Type  : Slow 1200mV 85C Model Setup 'key_delay:u7|key_out'
+Slack : -1.886
+TNS   : -12.732
+
+Type  : Slow 1200mV 85C Model Setup 'dev:u5|clk_5hz'
+Slack : -0.310
+TNS   : -0.356
+
+Type  : Slow 1200mV 85C Model Hold 'dev:u5|clk_1hz'
+Slack : 0.454
+TNS   : 0.000
+
+Type  : Slow 1200mV 85C Model Hold 'dev:u5|clk_250hz'
+Slack : 0.454
+TNS   : 0.000
+
+Type  : Slow 1200mV 85C Model Hold 'dev:u5|clk_5hz'
+Slack : 0.454
+TNS   : 0.000
+
+Type  : Slow 1200mV 85C Model Hold 'key_delay:u6|key_out'
+Slack : 0.454
+TNS   : 0.000
+
+Type  : Slow 1200mV 85C Model Hold 'key_delay:u7|key_out'
+Slack : 0.454
+TNS   : 0.000
+
+Type  : Slow 1200mV 85C Model Hold 'clk'
+Slack : 0.510
+TNS   : 0.000
+
+Type  : Slow 1200mV 85C Model Hold 'seltime:u4|scan_count[1]'
+Slack : 0.560
+TNS   : 0.000
+
+Type  : Slow 1200mV 85C Model Minimum Pulse Width 'clk'
+Slack : -3.000
+TNS   : -108.577
+
+Type  : Slow 1200mV 85C Model Minimum Pulse Width 'dev:u5|clk_250hz'
+Slack : -1.487
+TNS   : -19.331
+
+Type  : Slow 1200mV 85C Model Minimum Pulse Width 'dev:u5|clk_1hz'
+Slack : -1.487
+TNS   : -13.383
+
+Type  : Slow 1200mV 85C Model Minimum Pulse Width 'key_delay:u6|key_out'
+Slack : -1.487
+TNS   : -13.383
+
+Type  : Slow 1200mV 85C Model Minimum Pulse Width 'key_delay:u7|key_out'
+Slack : -1.487
+TNS   : -11.896
+
+Type  : Slow 1200mV 85C Model Minimum Pulse Width 'dev:u5|clk_5hz'
+Slack : -1.487
+TNS   : -4.461
+
+Type  : Slow 1200mV 85C Model Minimum Pulse Width 'seltime:u4|scan_count[1]'
+Slack : 0.389
+TNS   : 0.000
+
+Type  : Slow 1200mV 0C Model Setup 'clk'
+Slack : -4.966
+TNS   : -258.521
+
+Type  : Slow 1200mV 0C Model Setup 'seltime:u4|scan_count[1]'
+Slack : -4.566
+TNS   : -16.554
+
+Type  : Slow 1200mV 0C Model Setup 'dev:u5|clk_250hz'
+Slack : -2.654
+TNS   : -16.568
+
+Type  : Slow 1200mV 0C Model Setup 'key_delay:u6|key_out'
+Slack : -2.364
+TNS   : -11.179
+
+Type  : Slow 1200mV 0C Model Setup 'key_delay:u7|key_out'
+Slack : -1.700
+TNS   : -11.076
+
+Type  : Slow 1200mV 0C Model Setup 'dev:u5|clk_1hz'
+Slack : -1.617
+TNS   : -9.108
+
+Type  : Slow 1200mV 0C Model Setup 'dev:u5|clk_5hz'
+Slack : -0.180
+TNS   : -0.180
+
+Type  : Slow 1200mV 0C Model Hold 'dev:u5|clk_1hz'
+Slack : 0.402
+TNS   : 0.000
+
+Type  : Slow 1200mV 0C Model Hold 'dev:u5|clk_250hz'
+Slack : 0.402
+TNS   : 0.000
+
+Type  : Slow 1200mV 0C Model Hold 'key_delay:u6|key_out'
+Slack : 0.402
+TNS   : 0.000
+
+Type  : Slow 1200mV 0C Model Hold 'key_delay:u7|key_out'
+Slack : 0.402
+TNS   : 0.000
+
+Type  : Slow 1200mV 0C Model Hold 'dev:u5|clk_5hz'
+Slack : 0.403
+TNS   : 0.000
+
+Type  : Slow 1200mV 0C Model Hold 'seltime:u4|scan_count[1]'
+Slack : 0.430
+TNS   : 0.000
+
+Type  : Slow 1200mV 0C Model Hold 'clk'
+Slack : 0.470
+TNS   : 0.000
+
+Type  : Slow 1200mV 0C Model Minimum Pulse Width 'clk'
+Slack : -3.000
+TNS   : -108.577
+
+Type  : Slow 1200mV 0C Model Minimum Pulse Width 'dev:u5|clk_250hz'
+Slack : -1.487
+TNS   : -19.331
+
+Type  : Slow 1200mV 0C Model Minimum Pulse Width 'key_delay:u6|key_out'
+Slack : -1.487
+TNS   : -13.535
+
+Type  : Slow 1200mV 0C Model Minimum Pulse Width 'dev:u5|clk_1hz'
+Slack : -1.487
+TNS   : -13.383
+
+Type  : Slow 1200mV 0C Model Minimum Pulse Width 'key_delay:u7|key_out'
+Slack : -1.487
+TNS   : -11.896
+
+Type  : Slow 1200mV 0C Model Minimum Pulse Width 'dev:u5|clk_5hz'
+Slack : -1.487
+TNS   : -4.461
+
+Type  : Slow 1200mV 0C Model Minimum Pulse Width 'seltime:u4|scan_count[1]'
+Slack : 0.303
+TNS   : 0.000
+
+Type  : Fast 1200mV 0C Model Setup 'clk'
+Slack : -1.753
+TNS   : -75.588
+
+Type  : Fast 1200mV 0C Model Setup 'seltime:u4|scan_count[1]'
+Slack : -1.434
+TNS   : -5.279
+
+Type  : Fast 1200mV 0C Model Setup 'dev:u5|clk_250hz'
+Slack : -0.678
+TNS   : -2.634
+
+Type  : Fast 1200mV 0C Model Setup 'key_delay:u6|key_out'
+Slack : -0.572
+TNS   : -2.187
+
+Type  : Fast 1200mV 0C Model Setup 'dev:u5|clk_1hz'
+Slack : -0.314
+TNS   : -0.794
+
+Type  : Fast 1200mV 0C Model Setup 'key_delay:u7|key_out'
+Slack : -0.229
+TNS   : -1.340
+
+Type  : Fast 1200mV 0C Model Setup 'dev:u5|clk_5hz'
+Slack : 0.428
+TNS   : 0.000
+
+Type  : Fast 1200mV 0C Model Hold 'seltime:u4|scan_count[1]'
+Slack : 0.130
+TNS   : 0.000
+
+Type  : Fast 1200mV 0C Model Hold 'dev:u5|clk_250hz'
+Slack : 0.187
+TNS   : 0.000
+
+Type  : Fast 1200mV 0C Model Hold 'dev:u5|clk_5hz'
+Slack : 0.187
+TNS   : 0.000
+
+Type  : Fast 1200mV 0C Model Hold 'key_delay:u6|key_out'
+Slack : 0.187
+TNS   : 0.000
+
+Type  : Fast 1200mV 0C Model Hold 'key_delay:u7|key_out'
+Slack : 0.187
+TNS   : 0.000
+
+Type  : Fast 1200mV 0C Model Hold 'dev:u5|clk_1hz'
+Slack : 0.188
+TNS   : 0.000
+
+Type  : Fast 1200mV 0C Model Hold 'clk'
+Slack : 0.205
+TNS   : 0.000
+
+Type  : Fast 1200mV 0C Model Minimum Pulse Width 'clk'
+Slack : -3.000
+TNS   : -78.786
+
+Type  : Fast 1200mV 0C Model Minimum Pulse Width 'dev:u5|clk_250hz'
+Slack : -1.000
+TNS   : -13.000
+
+Type  : Fast 1200mV 0C Model Minimum Pulse Width 'dev:u5|clk_1hz'
+Slack : -1.000
+TNS   : -9.000
+
+Type  : Fast 1200mV 0C Model Minimum Pulse Width 'key_delay:u6|key_out'
+Slack : -1.000
+TNS   : -9.000
+
+Type  : Fast 1200mV 0C Model Minimum Pulse Width 'key_delay:u7|key_out'
+Slack : -1.000
+TNS   : -8.000
+
+Type  : Fast 1200mV 0C Model Minimum Pulse Width 'dev:u5|clk_5hz'
+Slack : -1.000
+TNS   : -3.000
+
+Type  : Fast 1200mV 0C Model Minimum Pulse Width 'seltime:u4|scan_count[1]'
+Slack : 0.295
+TNS   : 0.000
+
+------------------------------------------------------------

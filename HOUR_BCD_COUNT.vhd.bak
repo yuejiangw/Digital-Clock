@@ -1,0 +1,33 @@
+-----------------------------------------------------
+ -- 小时24进制或12进制的BCD计数模块
+-----------------------------------------------------
+LIBRARY IEEE;
+USE IEEE.STD_LOGIC_1164.ALL;
+USE IEEE.STD_LOGIC_UNSIGNED.ALL;
+
+ENTITY HOUR_BCD_COUNT IS
+PORT(clk_to_hour, reset, SCALE_SEL : IN STD_LOGIC;
+                            DATOUT : OUT STD_LOGIC_VECTOR(7 DOWNTO 0));
+END HOUR_BCD_COUNT;
+
+ARCHITECTURE BHV OF HOUR_BCD_COUNT IS
+SIGNAL COUNT_SHI, COUNT_GE : STD_LOGIC_VECTOR(3 DOWNTO 0);
+BEGIN 
+    PROCESS(clk_to_hour, reset)     BEGIN
+        IF reset = '0'      THEN COUNT_SHI <= "0000"; COUNT_GE <= "0000"; -- 有复位信号，则清除计数。
+        ELSIF clk_to_hour'EVENT AND clk_to_hour = '1'    THEN
+           IF SCALE_SEL = '1' THEN  -- 24进制
+                IF COUNT_SHI = "0010" AND COUNT_GE = "0011"     THEN COUNT_SHI <= "0000"; COUNT_GE <= "0000";  -- 24进制溢出清零
+                ELSIF COUNT_GE < "1001"     THEN COUNT_GE <= COUNT_GE + 1;
+                ELSE COUNT_GE <= "0000"; COUNT_SHI <= COUNT_SHI + 1;
+                END IF;
+            ELSE  -- 12进制
+               IF COUNT_SHI = "0001" AND COUNT_GE = "0001"      THEN COUNT_SHI <= "0000"; COUNT_GE <= "0000";  -- 12进制溢出清零
+              ELSIF COUNT_GE < "1001"       THEN COUNT_GE <= COUNT_GE + 1;
+                ELSE COUNT_GE <= "0000"; COUNT_SHI <= COUNT_SHI + 1;
+                END IF;
+            END IF;
+        END IF;
+    DATOUT <= COUNT_SHI & COUNT_GE;  -- 数据输出
+    END PROCESS;
+END BHV;
